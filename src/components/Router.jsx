@@ -1,16 +1,28 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
 import ErrorPage from './ErrorPage';
 import LoginForm from './LoginForm';
+import Dashboard from './Dashboard';
+import Protector from './Protector';
 
 function Router() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <LoginForm />,
+      element: <App />,
       errorElement: <ErrorPage />,
       children: [
         {
-          path: '/posts',
+          path: '/',
+          element: <LoginForm />,
+        },
+        {
+          path: '/dashboard',
+          element: (
+            <Protector>
+              <Dashboard />
+            </Protector>
+          ),
         },
       ],
     },

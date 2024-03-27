@@ -1,13 +1,19 @@
+import Footer from './Footer';
 import Router from './Router';
 
 function App() {
   return (
     <>
-      <header>Some header</header>
+      <header>
+        <h1>Blog API</h1>
+        <h3>Admin Page</h3>
+      </header>
       <main>
         <Router />
       </main>
-      <footer>Some footer</footer>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

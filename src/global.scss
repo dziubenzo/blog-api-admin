@@ -118,6 +118,171 @@ main {
   }
 }
 
+.new-post {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .page-title {
+    text-align: center;
+  }
+}
+
+.post-form {
+  display: grid;
+  gap: 16px;
+
+  label {
+    justify-self: center;
+    cursor: pointer;
+  }
+
+  input[type='text'],
+  textarea {
+    border: 1px solid $secondary-colour;
+    padding: 0.75em;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input[type='checkbox'] {
+    height: 28px;
+    width: 28px;
+    justify-self: center;
+    accent-color: $secondary-colour;
+    cursor: pointer;
+  }
+
+  button[type='submit'] {
+    background-color: $secondary-colour;
+    color: $background-colour;
+    border: 2px solid $secondary-colour;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
+/* 
+Text editor
+Some selectors are atrocious
+*/
+
+.ql-toolbar {
+  border: 1px solid $secondary-colour !important;
+  border-radius: 8px 8px;
+  margin-bottom: 1em;
+}
+
+.ql-container {
+  border: 1px solid $secondary-colour !important;
+}
+
+.ql-editor p,
+.ql-editor ol,
+.ql-editor ul,
+.ql-editor pre,
+.ql-editor blockquote,
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3,
+.ql-editor h4,
+.ql-editor h5,
+.ql-editor h6 {
+  * {
+    font-weight: revert !important;
+    font-style: revert !important;
+  }
+}
+
+.ql-snow .ql-stroke {
+  stroke: $primary-colour !important;
+}
+
+.ql-snow .ql-fill {
+  fill: $primary-colour !important;
+}
+
+.ql-snow.ql-toolbar button.ql-active .ql-fill,
+.ql-snow.ql-toolbar button:hover .ql-fill {
+  fill: $secondary-colour !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow .ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button:focus .ql-stroke,
+.ql-snow .ql-toolbar button:focus .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+.ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+  stroke: $secondary-colour !important;
+}
+
+.ql-picker-label {
+  border-color: $secondary-colour !important;
+}
+
+.ql-snow .ql-picker.ql-expanded .ql-picker-label {
+  color: $primary-colour;
+}
+
+.ql-snow.ql-toolbar .ql-picker-label:hover,
+.ql-snow.ql-toolbar .ql-picker-item:hover,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active {
+  color: $secondary-colour !important;
+}
+
+.ql-picker-options {
+  border: 1px solid $secondary-colour !important;
+  background-color: $background-colour !important;
+}
+
+.ql-tooltip {
+  background-color: $background-colour !important;
+  color: $primary-colour !important;
+  box-shadow: none !important;
+  border: 1px solid $secondary-colour !important;
+
+  input {
+    border: 1px solid $secondary-colour !important;
+  }
+}
+
+.ql-preview {
+  color: $primary-colour !important;
+}
+
+.ql-snow a {
+  color: $secondary-colour !important;
+}
+
 .error-page {
   text-align: center;
 }

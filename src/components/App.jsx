@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from './Footer';
 
@@ -10,7 +10,13 @@ function App() {
       <header>
         <h1>Blog API</h1>
         <h3>Admin Page</h3>
-        {isAuth ? <h3>Logged In</h3> : <h3>Logged Out</h3>}
+        {isAuth ? (
+          <h3>
+            <Link to="/dashboard">Dashboard</Link>
+          </h3>
+        ) : (
+          <h3>Logged Out</h3>
+        )}
       </header>
       <main>
         <Outlet context={{ isAuth, setIsAuth }} />

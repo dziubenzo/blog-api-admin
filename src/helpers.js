@@ -14,5 +14,10 @@ export const toolbarOptions = [
   [{ color: [] }],
   [{ align: [] }],
 
-  ['clean']
+  ['clean'],
 ];
+
+// Get token from localStorage
+export function getToken() {
+  return localStorage.getItem('blogAPIToken');
+}

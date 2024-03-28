@@ -4,6 +4,7 @@ import ErrorPage from './ErrorPage';
 import LoginForm from './LoginForm';
 import Dashboard from './Dashboard';
 import Protector from './Protector';
+import PostForm from './PostForm';
 
 function Router() {
   const router = createBrowserRouter([
@@ -21,6 +22,14 @@ function Router() {
           element: (
             <Protector>
               <Dashboard />
+            </Protector>
+          ),
+        },
+        {
+          path: '/dashboard/new-post',
+          element: (
+            <Protector>
+              <PostForm />
             </Protector>
           ),
         },

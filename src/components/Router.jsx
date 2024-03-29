@@ -8,9 +8,10 @@ import PostForm from './PostForm';
 import AllPosts from './AllPosts';
 import DeletePost from './DeletePost';
 import EditPostForm from './EditPostForm';
-import { allPostsLoader, postLoader } from '../loaders';
+import { allCommentsLoader, allPostsLoader, postLoader } from '../loaders';
 import UnpublishedPosts from './UnpublishedPosts';
 import PublishedPosts from './PublishedPosts';
+import AllComments from './AllComments';
 
 function Router() {
   const router = createBrowserRouter([
@@ -83,6 +84,15 @@ function Router() {
             </Protector>
           ),
           loader: allPostsLoader,
+        },
+        {
+          path: '/dashboard/all-comments',
+          element: (
+            <Protector>
+              <AllComments />
+            </Protector>
+          ),
+          loader: allCommentsLoader,
         },
       ],
     },

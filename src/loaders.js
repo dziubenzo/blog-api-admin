@@ -25,3 +25,17 @@ export async function postLoader(postId) {
     return error;
   }
 }
+
+// Loader - All Comments page
+export async function allCommentsLoader() {
+  try {
+    const res = await fetch('http://localhost:3000/posts/all/comments/all');
+    if (!res.ok) {
+      throw new Error('Failed to fetch.');
+    }
+    const allComments = await res.json();
+    return allComments;
+  } catch (error) {
+    return error;
+  }
+}

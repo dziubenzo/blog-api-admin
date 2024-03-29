@@ -36,7 +36,7 @@ function PublishedPosts() {
   return (
     <>
       {!publishedPosts.length ? (
-        <h1>No published posts to show.</h1>
+        <h1 className='no-posts-heading'>No published posts to show.</h1>
       ) : (
         <div className="published-posts">
           <h1>Posts - Published ({publishedPosts.length})</h1>

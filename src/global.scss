@@ -124,7 +124,8 @@ main {
 }
 
 .new-post,
-.edit-post {
+.edit-post,
+.edit-comment {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -134,7 +135,8 @@ main {
   }
 }
 
-.post-form {
+.post-form,
+.comment-form {
   display: grid;
   gap: 16px;
 
@@ -171,6 +173,22 @@ main {
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
+.comment-form {
+  width: 500px;
+
+  input[type='color'] {
+    justify-self: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    border: none;
     cursor: pointer;
   }
 }
@@ -393,5 +411,9 @@ Mobile media query
       text-overflow: initial;
       word-break: break-all;
     }
+  }
+
+  .comment-form {
+    width: 90vw;
   }
 }

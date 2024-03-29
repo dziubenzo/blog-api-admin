@@ -8,10 +8,17 @@ import PostForm from './PostForm';
 import AllPosts from './AllPosts';
 import DeletePost from './DeletePost';
 import EditPostForm from './EditPostForm';
-import { allCommentsLoader, allPostsLoader, postLoader } from '../loaders';
+import {
+  allCommentsLoader,
+  allPostsLoader,
+  commentLoader,
+  postLoader,
+} from '../loaders';
 import UnpublishedPosts from './UnpublishedPosts';
 import PublishedPosts from './PublishedPosts';
 import AllComments from './AllComments';
+import EditCommentForm from './EditCommentForm';
+import DeleteComment from './DeleteComment';
 
 function Router() {
   const router = createBrowserRouter([
@@ -93,6 +100,26 @@ function Router() {
             </Protector>
           ),
           loader: allCommentsLoader,
+        },
+        {
+          path: '/dashboard/posts/:postId/comments/:commentId/edit',
+          element: (
+            <Protector>
+              <EditCommentForm />
+            </Protector>
+          ),
+          loader: ({ params }) =>
+            commentLoader(params.postId, params.commentId),
+        },
+        {
+          path: '/dashboard/posts/:postId/comments/:commentId/edit',
+          element: (
+            <Protector>
+              <DeleteComment />
+            </Protector>
+          ),
+          loader: ({ params }) =>
+            commentLoader(params.postId, params.commentId),
         },
       ],
     },

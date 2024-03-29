@@ -1,3 +1,5 @@
+import { getToken } from './helpers';
+
 // Loader - All Posts page
 export async function allPostsLoader() {
   try {
@@ -35,6 +37,27 @@ export async function allCommentsLoader() {
     }
     const allComments = await res.json();
     return allComments;
+  } catch (error) {
+    return error;
+  }
+}
+
+// Loader - Edit and Delete Comment pages
+export async function commentLoader(postId, commentId) {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/posts/${postId}/comments/${commentId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      },
+    );
+    if (!res.ok) {
+      throw new Error('Failed to fetch.');
+    }
+    const comment = await res.json();
+    return comment;
   } catch (error) {
     return error;
   }

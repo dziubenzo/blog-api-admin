@@ -12,8 +12,8 @@ export async function allPostsLoader() {
   }
 }
 
-// Loader - Edit Post
-export async function editPostLoader(postId) {
+// Loader - Edit and Delete Post pages
+export async function postLoader(postId) {
   try {
     const res = await fetch(`http://localhost:3000/posts/${postId}`);
     if (!res.ok) {

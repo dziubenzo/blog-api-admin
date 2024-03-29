@@ -198,6 +198,28 @@ main {
   }
 }
 
+.delete-post {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+
+  p {
+    margin: 1em 0;
+  }
+
+  button {
+    background-color: $secondary-colour;
+    color: $background-colour;
+    border: 2px solid $secondary-colour;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
 /* 
 Text editor
 Some selectors are atrocious

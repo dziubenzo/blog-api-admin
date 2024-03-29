@@ -8,7 +8,7 @@ import PostForm from './PostForm';
 import AllPosts from './AllPosts';
 import DeletePost from './DeletePost';
 import EditPostForm from './EditPostForm';
-import { allPostsLoader, editPostLoader } from '../loaders';
+import { allPostsLoader, postLoader } from '../loaders';
 
 function Router() {
   const router = createBrowserRouter([
@@ -53,7 +53,7 @@ function Router() {
               <EditPostForm />
             </Protector>
           ),
-          loader: ({ params }) => editPostLoader(params.postId),
+          loader: ({ params }) => postLoader(params.postId),
         },
         {
           path: '/dashboard/all-posts/:postId/delete',
@@ -62,6 +62,7 @@ function Router() {
               <DeletePost />
             </Protector>
           ),
+          loader: ({ params }) => postLoader(params.postId),
         },
       ],
     },

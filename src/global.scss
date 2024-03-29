@@ -171,7 +171,8 @@ main {
 }
 
 .all-posts,
-.unpublished-posts {
+.unpublished-posts,
+.published-posts {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -190,7 +191,8 @@ main {
 }
 
 .all-posts-table,
-.unpublished-posts-table {
+.unpublished-posts-table,
+.published-posts-table {
   th {
     font-weight: 700;
   }

@@ -71,7 +71,7 @@ function EditPostForm() {
           minLength="3"
           maxLength="160"
           rows="4"
-          value={post.title}
+          defaultValue={post.title}
           required
         />
         <label htmlFor="author">Author:</label>
@@ -81,7 +81,7 @@ function EditPostForm() {
           id="author"
           minLength="3"
           maxLength="64"
-          value={post.author}
+          defaultValue={post.author}
           required
         />
         <label>Text:</label>

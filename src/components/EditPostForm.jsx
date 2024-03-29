@@ -42,7 +42,7 @@ function EditPostForm() {
           Authorization: `Bearer ${getToken()}`,
         },
       });
-      // Show error message for 3 seconds and clear form fields if credentials incorrect
+      // Show error message for 3 seconds and clear form fields if there's something wrong
       if (!res.ok) {
         setIsEditing(false);
         setError('Server error (probably). Please try again.');

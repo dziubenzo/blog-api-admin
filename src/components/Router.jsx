@@ -112,7 +112,7 @@ function Router() {
             commentLoader(params.postId, params.commentId),
         },
         {
-          path: '/dashboard/posts/:postId/comments/:commentId/edit',
+          path: '/dashboard/posts/:postId/comments/:commentId/delete',
           element: (
             <Protector>
               <DeleteComment />

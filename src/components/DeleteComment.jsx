@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { getToken } from '../helpers';
 
 function DeleteComment() {
   const navigate = useNavigate();
@@ -9,7 +10,35 @@ function DeleteComment() {
   const [isDeleting, setIsDeleting] = useState(false);
   // State for showing success message
   const [isDeleted, setIsDeleted] = useState(false);
-  
+
+  // Delete comment
+  async function deleteComment() {
+    try {
+      setIsDeleting(true);
+      const res = await fetch(
+        `http://localhost:3000/posts/${comment.post}/comments/${comment._id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        },
+      );
+      if (!res.ok) {
+        setIsDeleting(false);
+        throw new Error('Deleting comment failed...');
+      }
+      // Show success message and redirect to All Comments 3 seconds later
+      setIsDeleting(false);
+      setIsDeleted(true);
+      setTimeout(() => {
+        return navigate('/dashboard/all-comments');
+      }, 3000);
+    } catch (error) {
+      return error;
+    }
+  }
+
   return (
     <div className="delete-comment">
       {!isDeleted ? (
@@ -19,7 +48,7 @@ function DeleteComment() {
           <p>
             by <span>{comment.author}</span>
           </p>
-          <button type="button">
+          <button type="button" onClick={deleteComment}>
             {isDeleting ? 'Deleting comment...' : 'Go Ahead'}
           </button>
         </>

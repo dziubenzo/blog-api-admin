@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { getToken } from '../helpers';
 
 function PublishedPosts() {
   const navigate = useNavigate();
@@ -10,6 +11,27 @@ function PublishedPosts() {
 
   // State for showing the unpublishing process is in progress
   const [isUnpublishing, setIsUnpublishing] = useState(false);
+
+  // Unpublish all posts
+  async function unpublishAllPosts() {
+    try {
+      setIsUnpublishing(true);
+      const res = await fetch('http://localhost:3000/posts/unpublish-all', {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
+      if (!res.ok) {
+        setIsUnpublishing(false);
+        throw new Error('Unpublishing all posts failed...');
+      }
+      // Refresh page
+      navigate();
+    } catch (error) {
+      return error;
+    }
+  }
 
   return (
     <>
@@ -38,7 +60,7 @@ function PublishedPosts() {
               })}
             </tbody>
           </table>
-          <button type="button">
+          <button type="button" onClick={unpublishAllPosts}>
             {isUnpublishing ? 'Unpublishing all posts...' : 'Unpublish All'}
           </button>
         </div>

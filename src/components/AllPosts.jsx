@@ -6,7 +6,7 @@ function AllPosts() {
   return (
     <>
       {!posts.length ? (
-        <h1>No posts to show.</h1>
+        <h1 className='no-posts-heading'>No posts to show.</h1>
       ) : (
         <div className="all-posts">
           <h1>All Posts ({posts.length})</h1>
@@ -29,12 +29,12 @@ function AllPosts() {
                     <td>{post.author}</td>
                     <td>
                       <Link to={`${post._id}/edit`}>
-                        <img src="/edit.svg" alt="Edit Icon" />
+                        <img src="/edit.svg" alt="Edit Post Icon" />
                       </Link>
                     </td>
                     <td>
                       <Link to={`${post._id}/delete`}>
-                        <img src="/delete.svg" alt="Delete Icon" />
+                        <img src="/delete.svg" alt="Delete Post Icon" />
                       </Link>
                     </td>
                   </tr>

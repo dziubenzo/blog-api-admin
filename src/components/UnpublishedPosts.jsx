@@ -36,7 +36,7 @@ function UnpublishedPosts() {
   return (
     <>
       {!unpublishedPosts.length ? (
-        <h1>No unpublished posts to show.</h1>
+        <h1 className='no-posts-heading'>No unpublished posts to show.</h1>
       ) : (
         <div className="unpublished-posts">
           <h1>Posts - Unpublished ({unpublishedPosts.length})</h1>

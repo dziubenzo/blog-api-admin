@@ -61,6 +61,11 @@ footer {
 
 main {
   margin: 3em 0;
+
+  .no-posts-heading,
+  .no-comments-heading {
+    text-align: center;
+  }
 }
 
 .login-form {
@@ -172,7 +177,8 @@ main {
 
 .all-posts,
 .unpublished-posts,
-.published-posts {
+.published-posts,
+.all-comments {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -192,7 +198,8 @@ main {
 
 .all-posts-table,
 .unpublished-posts-table,
-.published-posts-table {
+.published-posts-table,
+.all-comments-table {
   th {
     font-weight: 700;
   }
@@ -200,12 +207,13 @@ main {
   th,
   td {
     text-align: center;
-    padding: 0.25em;
+    padding: 0.75em 0.25em;
   }
 
-  .post-title {
+  .post-title,
+  .comment-content {
     text-align: start;
-    max-width: 500px;
+    max-width: 600px;
   }
 
   img {
@@ -358,4 +366,32 @@ Some selectors are atrocious
 .error-message {
   text-align: center;
   color: red;
+}
+
+/* 
+Mobile media query
+*/
+
+@media (width <= 600px) {
+  .all-posts-table,
+  .unpublished-posts-table,
+  .published-posts-table,
+  .all-comments-table {
+    width: 100%;
+
+    th,
+    td {
+      font-size: 0.85rem;
+    }
+
+    .post-title,
+    .comment-author,
+    .comment-content {
+      max-width: initial;
+      white-space: initial;
+      overflow: initial;
+      text-overflow: initial;
+      word-break: break-all;
+    }
+  }
 }

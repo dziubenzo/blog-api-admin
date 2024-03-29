@@ -1,11 +1,40 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { getToken } from '../helpers';
 
 function DeletePost() {
+  const navigate = useNavigate();
   const post = useLoaderData();
 
+  // State for showing the delete process is in progress
+  const [isDeleting, setIsDeleting] = useState(false);
   // State for showing success message
   const [isDeleted, setIsDeleted] = useState(false);
+
+  // Delete post
+  async function deletePost() {
+    try {
+      setIsDeleting(true);
+      const res = await fetch(`http://localhost:3000/posts/${post._id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
+      if (!res.ok) {
+        setIsDeleting(false);
+        throw new Error('Deleting post failed...');
+      }
+      // Show success message and redirect to All Posts 3 seconds later
+      setIsDeleting(false);
+      setIsDeleted(true);
+      setTimeout(() => {
+        return navigate('/dashboard/all-posts');
+      }, 3000);
+    } catch (error) {
+      return error;
+    }
+  }
 
   return (
     <div className="delete-post">
@@ -14,12 +43,14 @@ function DeletePost() {
           <h1>Delete this post?</h1>
           <p>{post.title}</p>
           <p>by {post.author}</p>
-          <button type="button">Go Ahead</button>
+          <button type="button" onClick={deletePost}>
+            {isDeleting ? 'Deleting post...' : 'Go Ahead'}
+          </button>
         </>
       ) : (
         <>
-          <h1>Post deleted successfully!</h1>
-          <h1>Redirecting to All Posts...</h1>
+          <h2>Post deleted successfully!</h2>
+          <h2>Redirecting to All Posts...</h2>
         </>
       )}
     </div>

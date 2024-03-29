@@ -42,7 +42,9 @@ function DeletePost() {
         <>
           <h1>Delete this post?</h1>
           <p>{post.title}</p>
-          <p>by {post.author}</p>
+          <p>
+            by <span>{post.author}</span>
+          </p>
           <button type="button" onClick={deletePost}>
             {isDeleting ? 'Deleting post...' : 'Go Ahead'}
           </button>

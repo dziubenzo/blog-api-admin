@@ -7,7 +7,7 @@ function LoginForm() {
   const { setIsAuth } = useOutletContext();
 
   // State for showing errors
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState('');
 
   // Log in user
   async function logIn(event) {
@@ -26,9 +26,9 @@ function LoginForm() {
       });
       // Show error message for 3 seconds and clear form fields if credentials incorrect
       if (!res.ok) {
-        setIsError(true);
+        setError('Incorrect credentials.');
         setTimeout(() => {
-          setIsError(false);
+          setError('');
         }, 3000);
         formRef.current.reset();
         return;
@@ -40,7 +40,10 @@ function LoginForm() {
       // Redirect to Dashboard page
       return navigate('/dashboard');
     } catch (error) {
-      throw new Error(error);
+      setError('Server error. Please try again.');
+      setTimeout(() => {
+        setError('');
+      }, 3000);
     }
   }
   return (
@@ -65,8 +68,8 @@ function LoginForm() {
           required
         />
         <button type="submit">Log In</button>
-        {isError && <h3>Incorrect credentials</h3>}
       </form>
+      {error && <h3 className="error-message">{error}</h3>}
     </div>
   );
 }

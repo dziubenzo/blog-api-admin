@@ -5,6 +5,10 @@ import LoginForm from './LoginForm';
 import Dashboard from './Dashboard';
 import Protector from './Protector';
 import PostForm from './PostForm';
+import AllPosts from './AllPosts';
+import DeletePost from './DeletePost';
+import EditPostForm from './EditPostForm';
+import { allPostsLoader } from '../loaders';
 
 function Router() {
   const router = createBrowserRouter([
@@ -30,6 +34,31 @@ function Router() {
           element: (
             <Protector>
               <PostForm />
+            </Protector>
+          ),
+        },
+        {
+          path: '/dashboard/all-posts',
+          element: (
+            <Protector>
+              <AllPosts />
+            </Protector>
+          ),
+          loader: allPostsLoader,
+        },
+        {
+          path: '/dashboard/all-posts/:postId/edit',
+          element: (
+            <Protector>
+              <EditPostForm />
+            </Protector>
+          ),
+        },
+        {
+          path: '/dashboard/all-posts/:postId/delete',
+          element: (
+            <Protector>
+              <DeletePost />
             </Protector>
           ),
         },

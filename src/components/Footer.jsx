@@ -8,7 +8,7 @@ function Footer() {
         rel="noopener noreferrer"
         aria-label="Developer's GitHub page, opens in new tab"
       >
-        <img src="github-logo.svg" alt="GitHub Logo" />
+        <img src="/github-logo.svg" alt="GitHub Logo" />
       </a>
     </>
   );

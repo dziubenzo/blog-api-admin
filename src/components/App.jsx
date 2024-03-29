@@ -1,8 +1,11 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigation } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from './Footer';
 
 function App() {
+  const navigation = useNavigation();
+  const isLoading = navigation.state === 'loading';
+
   const [isAuth, setIsAuth] = useState(false);
 
   return (
@@ -19,7 +22,11 @@ function App() {
         )}
       </header>
       <main>
-        <Outlet context={{ isAuth, setIsAuth }} />
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <Outlet context={{ isAuth, setIsAuth }} />
+        )}
       </main>
       <footer>
         <Footer />

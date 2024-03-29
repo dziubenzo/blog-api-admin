@@ -169,6 +169,34 @@ main {
   }
 }
 
+.all-posts-heading {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.all-posts-table {
+  th {
+    font-weight: 700;
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding: 0.25em;
+  }
+
+  .post-title {
+    text-align: start;
+    max-width: 500px;
+  }
+
+  img {
+    height: 28px;
+    background-color: initial;
+    filter: $primary-colour-icon;
+  }
+}
+
 /* 
 Text editor
 Some selectors are atrocious

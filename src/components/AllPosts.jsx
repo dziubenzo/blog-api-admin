@@ -8,8 +8,8 @@ function AllPosts() {
       {!posts.length ? (
         <h1>No posts to show.</h1>
       ) : (
-        <>
-          <h1 className="all-posts-heading">All Posts ({posts.length})</h1>
+        <div className="all-posts">
+          <h1>All Posts ({posts.length})</h1>
           <table className="all-posts-table">
             <thead>
               <tr>
@@ -42,7 +42,7 @@ function AllPosts() {
               })}
             </tbody>
           </table>
-        </>
+        </div>
       )}
     </>
   );

@@ -9,6 +9,7 @@ import AllPosts from './AllPosts';
 import DeletePost from './DeletePost';
 import EditPostForm from './EditPostForm';
 import { allPostsLoader, postLoader } from '../loaders';
+import UnpublishedPosts from './UnpublishedPosts';
 
 function Router() {
   const router = createBrowserRouter([
@@ -63,6 +64,15 @@ function Router() {
             </Protector>
           ),
           loader: ({ params }) => postLoader(params.postId),
+        },
+        {
+          path: '/dashboard/unpublished-posts',
+          element: (
+            <Protector>
+              <UnpublishedPosts />
+            </Protector>
+          ),
+          loader: allPostsLoader,
         },
       ],
     },

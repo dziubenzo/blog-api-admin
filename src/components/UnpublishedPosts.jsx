@@ -1,14 +1,37 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { getToken } from '../helpers';
 
 function UnpublishedPosts() {
+  const navigate = useNavigate();
   const posts = useLoaderData();
+
+  // Get unpublished posts
+  const unpublishedPosts = posts.filter((post) => post.published === false);
 
   // State for showing the publishing process is in progress
   const [isPublishing, setIsPublishing] = useState(false);
 
-  // Get unpublished posts
-  const unpublishedPosts = posts.filter((post) => post.published === false);
+  // Publish all posts
+  async function publishAllPosts() {
+    try {
+      setIsPublishing(true);
+      const res = await fetch('http://localhost:3000/posts/publish-all', {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
+      if (!res.ok) {
+        setIsPublishing(false);
+        throw new Error('Publishing all posts failed...');
+      }
+      // Refresh page
+      navigate();
+    } catch (error) {
+      return error;
+    }
+  }
 
   return (
     <>
@@ -37,7 +60,7 @@ function UnpublishedPosts() {
               })}
             </tbody>
           </table>
-          <button type="button">
+          <button type="button" onClick={publishAllPosts}>
             {isPublishing ? 'Publishing all posts...' : 'Publish All'}
           </button>
         </div>

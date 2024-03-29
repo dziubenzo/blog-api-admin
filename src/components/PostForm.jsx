@@ -11,6 +11,8 @@ function PostForm() {
   const [error, setError] = useState('');
   // State for rich text editor data
   const [content, setContent] = useState('');
+  // State for showing the post submitting process is in progress
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Create new post
   async function createPost(event) {
@@ -32,6 +34,7 @@ function PostForm() {
       published: Boolean(formData.get('published')),
     };
     try {
+      setIsSubmitting(true);
       const res = await fetch(`http://localhost:3000/posts`, {
         method: 'POST',
         body: JSON.stringify(newPostData),
@@ -42,6 +45,7 @@ function PostForm() {
       });
       // Show error message for 3 seconds and clear form fields if credentials incorrect
       if (!res.ok) {
+        setIsSubmitting(false);
         setError('Server error (probably). Please try again.');
         setTimeout(() => {
           setError('');
@@ -49,6 +53,7 @@ function PostForm() {
         return;
       }
       // Redirect to Dashboard
+      setIsSubmitting(false);
       return navigate('/dashboard');
     } catch (error) {
       throw new Error(error);
@@ -89,7 +94,9 @@ function PostForm() {
         </div>
         <label htmlFor="published">Publish?</label>
         <input type="checkbox" name="published" id="published" value="true" />
-        <button type="submit">Submit Post</button>
+        <button type="submit">
+          {isSubmitting ? 'Submitting post...' : 'Submit Post'}
+        </button>
         {error && <p className="error-message">{error}</p>}
       </form>
     </div>

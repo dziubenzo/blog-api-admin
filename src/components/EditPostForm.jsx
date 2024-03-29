@@ -10,6 +10,8 @@ function EditPostForm() {
 
   const [content, setContent] = useState(post.content);
   const [error, setError] = useState('');
+  // State for showing the editing process is in progress
+  const [isEditing, setIsEditing] = useState(false);
 
   // Edit post
   async function editPost(event) {
@@ -31,6 +33,7 @@ function EditPostForm() {
       published: Boolean(formData.get('published')),
     };
     try {
+      setIsEditing(true);
       const res = await fetch(`http://localhost:3000/posts/${post._id}`, {
         method: 'PUT',
         body: JSON.stringify(editedPostData),
@@ -41,6 +44,7 @@ function EditPostForm() {
       });
       // Show error message for 3 seconds and clear form fields if credentials incorrect
       if (!res.ok) {
+        setIsEditing(false);
         setError('Server error (probably). Please try again.');
         setTimeout(() => {
           setError('');
@@ -48,6 +52,7 @@ function EditPostForm() {
         return;
       }
       // Redirect to All Posts
+      setIsEditing(false);
       return navigate('/dashboard/all-posts');
     } catch (error) {
       throw new Error(error);
@@ -90,7 +95,9 @@ function EditPostForm() {
         </div>
         <label htmlFor="published">Publish?</label>
         <input type="checkbox" name="published" id="published" value="true" />
-        <button type="submit">Edit Post</button>
+        <button type="submit">
+          {isEditing ? 'Editing post...' : 'Edit Post'}
+        </button>
         {error && <p className="error-message">{error}</p>}
       </form>
     </div>

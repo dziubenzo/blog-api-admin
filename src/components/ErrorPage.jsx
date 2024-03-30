@@ -5,7 +5,7 @@ function ErrorPage() {
     <div className="error-page">
       <h2>Something went terribly wrong...</h2>
       <h2>
-        Click <Link to="/">here</Link> to go back to the Home page.
+        Click <Link to="/">here</Link> to log in again.
       </h2>
     </div>
   );

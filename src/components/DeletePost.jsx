@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { getToken } from '../helpers';
+import API_URL from '../API';
 
 function DeletePost() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function DeletePost() {
   async function deletePost() {
     try {
       setIsDeleting(true);
-      const res = await fetch(`http://localhost:3000/posts/${post._id}`, {
+      const res = await fetch(`${API_URL}/posts/${post._id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${getToken()}`,

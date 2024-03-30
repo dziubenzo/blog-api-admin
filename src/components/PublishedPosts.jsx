@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { getToken } from '../helpers';
+import API_URL from '../API';
 
 function PublishedPosts() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function PublishedPosts() {
   async function unpublishAllPosts() {
     try {
       setIsUnpublishing(true);
-      const res = await fetch('http://localhost:3000/posts/unpublish-all', {
+      const res = await fetch(`${API_URL}/posts/unpublish-all`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${getToken()}`,
@@ -36,7 +37,7 @@ function PublishedPosts() {
   return (
     <>
       {!publishedPosts.length ? (
-        <h1 className='no-posts-heading'>No published posts to show.</h1>
+        <h1 className="no-posts-heading">No published posts to show.</h1>
       ) : (
         <div className="published-posts">
           <h1>Posts - Published ({publishedPosts.length})</h1>

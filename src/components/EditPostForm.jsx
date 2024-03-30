@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import { useState } from 'react';
 import { toolbarOptions } from '../helpers';
 import { getToken } from '../helpers';
+import API_URL from '../API';
 
 function EditPostForm() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function EditPostForm() {
     };
     try {
       setIsEditing(true);
-      const res = await fetch(`http://localhost:3000/posts/${post._id}`, {
+      const res = await fetch(`${API_URL}/posts/${post._id}`, {
         method: 'PUT',
         body: JSON.stringify(editedPostData),
         headers: {

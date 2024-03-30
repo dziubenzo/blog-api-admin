@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import API_URL from '../API';
 
 function LoginForm() {
   const formRef = useRef(null);
@@ -19,7 +20,7 @@ function LoginForm() {
       password: formData.get('password'),
     };
     try {
-      const res = await fetch(`http://localhost:3000/users/login`, {
+      const res = await fetch(`${API_URL}/users/login`, {
         method: 'POST',
         body: JSON.stringify(newCommentData),
         headers: { 'Content-Type': 'application/json' },

@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill/dist/react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { toolbarOptions, getToken } from '../helpers';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../API';
 
 function PostForm() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ function PostForm() {
     };
     try {
       setIsSubmitting(true);
-      const res = await fetch(`http://localhost:3000/posts`, {
+      const res = await fetch(`${API_URL}/posts`, {
         method: 'POST',
         body: JSON.stringify(newPostData),
         headers: {

@@ -1,9 +1,10 @@
 import { getToken } from './helpers';
+import API_URL from './API';
 
 // Loader - All Posts page
 export async function allPostsLoader() {
   try {
-    const res = await fetch('http://localhost:3000/posts');
+    const res = await fetch(`${API_URL}/posts`);
     if (!res.ok) {
       throw new Error('Failed to fetch.');
     }
@@ -17,7 +18,7 @@ export async function allPostsLoader() {
 // Loader - Edit and Delete Post pages
 export async function postLoader(postId) {
   try {
-    const res = await fetch(`http://localhost:3000/posts/${postId}`);
+    const res = await fetch(`${API_URL}/posts/${postId}`);
     if (!res.ok) {
       throw new Error('Failed to fetch.');
     }
@@ -31,7 +32,7 @@ export async function postLoader(postId) {
 // Loader - All Comments page
 export async function allCommentsLoader() {
   try {
-    const res = await fetch('http://localhost:3000/posts/all/comments/all');
+    const res = await fetch(`${API_URL}/posts/all/comments/all`);
     if (!res.ok) {
       throw new Error('Failed to fetch.');
     }
@@ -46,7 +47,7 @@ export async function allCommentsLoader() {
 export async function commentLoader(postId, commentId) {
   try {
     const res = await fetch(
-      `http://localhost:3000/posts/${postId}/comments/${commentId}`,
+      `${API_URL}/posts/${postId}/comments/${commentId}`,
       {
         headers: {
           Authorization: `Bearer ${getToken()}`,

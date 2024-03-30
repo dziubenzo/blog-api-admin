@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { getToken } from '../helpers';
+import API_URL from '../API';
 
 function DeleteComment() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function DeleteComment() {
     try {
       setIsDeleting(true);
       const res = await fetch(
-        `http://localhost:3000/posts/${comment.post}/comments/${comment._id}`,
+        `${API_URL}/posts/${comment.post}/comments/${comment._id}`,
         {
           method: 'DELETE',
           headers: {

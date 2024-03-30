@@ -69,6 +69,8 @@ main {
 }
 
 .login-form {
+  position: relative;
+
   form {
     display: grid;
     place-items: center;
@@ -98,6 +100,14 @@ main {
     border-radius: 8px;
     margin-top: 1.5em;
     cursor: pointer;
+  }
+
+  .error-message {
+    position: absolute;
+    bottom: -20%;
+    text-align: center;
+    width: 100%;
+    color: red;
   }
 }
 
@@ -282,6 +292,7 @@ Some selectors are atrocious
 
 .ql-container {
   border: 1px solid $secondary-colour !important;
+  width: min(95vw, 1200px);
 }
 
 .ql-editor {
@@ -396,11 +407,6 @@ Some selectors are atrocious
   text-align: center;
 }
 
-.error-message {
-  text-align: center;
-  color: red;
-}
-
 /* 
 Mobile media query
 */
@@ -430,5 +436,9 @@ Mobile media query
 
   .comment-form {
     width: 90vw;
+  }
+
+  .ql-container {
+    width: revert;
   }
 }

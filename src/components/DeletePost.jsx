@@ -26,12 +26,12 @@ function DeletePost() {
         setIsDeleting(false);
         throw new Error('Deleting post failed...');
       }
-      // Show success message and redirect to All Posts 3 seconds later
+      // Show success message and redirect to All Posts 1 second later
       setIsDeleting(false);
       setIsDeleted(true);
       setTimeout(() => {
         return navigate('/dashboard/all-posts');
-      }, 3000);
+      }, 1000);
     } catch (error) {
       return error;
     }

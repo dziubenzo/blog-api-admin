@@ -29,12 +29,12 @@ function DeleteComment() {
         setIsDeleting(false);
         throw new Error('Deleting comment failed...');
       }
-      // Show success message and redirect to All Comments 3 seconds later
+      // Show success message and redirect to All Comments 1 second later
       setIsDeleting(false);
       setIsDeleted(true);
       setTimeout(() => {
         return navigate('/dashboard/all-comments');
-      }, 3000);
+      }, 1000);
     } catch (error) {
       return error;
     }
